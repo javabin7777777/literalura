@@ -2,10 +2,16 @@ package com.samzubeli.literalura.utilidades;
 
 import java.util.Scanner;
 
+import com.samzubeli.literalura.model.DadosDoLivro;
+import com.samzubeli.literalura.model.Livros;
+import com.samzubeli.literalura.servico.ConsultarApi;
+import com.samzubeli.literalura.servico.FiltrarDados;
+
 public class ItensUteis {
 	private static Scanner ler = new Scanner(System.in);
-
-	public static void exibirMenu() {
+	private static String endereco = "http://gutendex.com/books/?search="; //"http://gutendex.com/books/?search=dom+casmurro";
+	private static String str = "";
+	public static void exibirMenu(ConsultarApi buscar, FiltrarDados filtro) {
 		while (true) {
 			System.out.println("escolha uma das opções abaixo\n".toUpperCase());
 			System.out.println("1. buscar livro pelo título".toUpperCase());
@@ -21,7 +27,8 @@ public class ItensUteis {
 			
 			switch (opcao) {
 
-			case 1:
+			case 1: 
+				cadastrarLivro (buscar, filtro);
 				;
 				break;
 			case 2:
@@ -39,5 +46,21 @@ public class ItensUteis {
 
 			}
 		}
+	}
+
+	private static void cadastrarLivro(ConsultarApi buscar,FiltrarDados filtro) {
+		System.out.println("\n entre com o nome do livro".toUpperCase()
+				+" * nomes compostos,separar com espaço");
+		String livroNome = ler.nextLine();
+		livroNome = livroNome.replace(" ", "+");
+		endereco = endereco.concat(livroNome); 
+		str = buscar.obterDados(endereco);
+		DadosDoLivro dadosDoLivro = filtro.obterDados(str, DadosDoLivro.class);
+		Livros livro = new Livros(dadosDoLivro.resultado().get(0));
+		System.out.println("\n livro\n".toUpperCase()+livro);
+		System.out.println(livro.getAutor().get(0));
+		System.out.println(livro.getAutor().get(0).nome());
+		System.out.println(livro.getAutor().get(0).anoNascimento());
+		System.out.println(livro.getAutor().get(0).anoFalecimento());		
 	}
 }
