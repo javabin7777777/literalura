@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Livros {
-	
+	/*
+	private List<String> resultado = new ArrayList<>();		
 	private String titulo;
 	private List<String> autor = new ArrayList<>();
 	private List<String> idioma = new ArrayList<>();
@@ -56,9 +57,6 @@ public class Livros {
 
 	public void setNumeroDownloads(Integer numeroDownloads) {
 		this.numeroDownloads = numeroDownloads;
-	}
-	
-	
-	
-	
+	}	
+	*/
 }

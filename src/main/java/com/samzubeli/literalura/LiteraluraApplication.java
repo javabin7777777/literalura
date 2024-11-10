@@ -22,9 +22,10 @@ public class LiteraluraApplication implements CommandLineRunner {
 		ConsultarApi buscar = new ConsultarApi();
 		String endereco = "http://gutendex.com/books/?search=dom+casmurro";
 		String strJson = buscar.obterDados(endereco);
+		System.out.println(strJson);
 		DadosDoLivro dadosDoLivro = filtro.obterDados(strJson, DadosDoLivro.class);
 		System.out.println(dadosDoLivro);
-		
+		System.out.println("\nterminou,tchau.".toUpperCase());		
 	}
 
 }
