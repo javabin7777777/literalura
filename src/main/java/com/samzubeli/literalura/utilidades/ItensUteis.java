@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import com.samzubeli.literalura.model.DadosDoLivro;
 import com.samzubeli.literalura.model.Livros;
+import com.samzubeli.literalura.model.dadosDB.LivroPersistir;
+import com.samzubeli.literalura.model.dadosDB.repository.livroPersistirRepository;
 import com.samzubeli.literalura.servico.ConsultarApi;
 import com.samzubeli.literalura.servico.FiltrarDados;
 
@@ -11,7 +13,9 @@ public class ItensUteis {
 	private static Scanner ler = new Scanner(System.in);
 	private static String endereco = "http://gutendex.com/books/?search="; //"http://gutendex.com/books/?search=dom+casmurro";
 	private static String str = "";
-	public static void exibirMenu(ConsultarApi buscar, FiltrarDados filtro) {
+	public static void exibirMenu(ConsultarApi buscar, FiltrarDados filtro, 
+			livroPersistirRepository repository) {
+		
 		while (true) {
 			System.out.println("\nescolha uma das opções abaixo".toUpperCase());
 			System.out.println("    1. buscar livro pelo título".toUpperCase());
@@ -28,7 +32,7 @@ public class ItensUteis {
 			switch (opcao) {
 
 			case 1: 
-				cadastrarLivro (buscar, filtro);
+				cadastrarLivro (buscar, filtro, repository);
 				;
 				break;
 			case 2:
@@ -48,7 +52,9 @@ public class ItensUteis {
 		}
 	}
 
-	private static void cadastrarLivro(ConsultarApi buscar,FiltrarDados filtro) {
+	private static void cadastrarLivro(ConsultarApi buscar,FiltrarDados filtro, 
+			livroPersistirRepository repository) {
+		
 		System.out.println("\n    entre com o nome do livro".toUpperCase()
 				+" * nomes compostos,favor usar como separador,o espaço");
 		String livroNome = ler.nextLine();
@@ -56,7 +62,12 @@ public class ItensUteis {
 		endereco = endereco.concat(livroNome); 
 		str = buscar.obterDados(endereco);
 		DadosDoLivro dadosDoLivro = filtro.obterDados(str, DadosDoLivro.class);
-		Livros livro = new Livros(dadosDoLivro.resultado().get(0));
+		Livros livro = new Livros(dadosDoLivro.resultado().get(0));		
+		LivroPersistir livroDB = new LivroPersistir(livro.getTitulo(),
+				livro.getIdioma(), livro.getNumeroDownloads());
+		
+		repository.save(livroDB);
+		
 		System.out.println("\n livro\n".toUpperCase()+livro);
 		System.out.println(livro.getAutor().get(0));
 		System.out.println(livro.getAutor().get(0).nome());

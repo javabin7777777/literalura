@@ -1,21 +1,21 @@
 package com.samzubeli.literalura;
 
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.samzubeli.literalura.model.Autores;
-import com.samzubeli.literalura.model.DadosDoLivro;
-import com.samzubeli.literalura.model.Livros;
+import com.samzubeli.literalura.model.dadosDB.repository.livroPersistirRepository;
 import com.samzubeli.literalura.servico.ConsultarApi;
 import com.samzubeli.literalura.servico.FiltrarDados;
 import com.samzubeli.literalura.utilidades.ItensUteis;
 
 @SpringBootApplication
 public class LiteraluraApplication implements CommandLineRunner {
-
+	
+	@Autowired
+	private livroPersistirRepository repository;// Salvar dados no SGBD.
+	
 	public static void main(String[] args) {
 		SpringApplication.run(LiteraluraApplication.class, args);
 	}
@@ -24,7 +24,7 @@ public class LiteraluraApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		FiltrarDados filtro = new FiltrarDados();
 		ConsultarApi buscar = new ConsultarApi();
-		ItensUteis.exibirMenu(buscar, filtro);
+		ItensUteis.exibirMenu(buscar, filtro, repository);
 		System.out.println("\nterminou,tchau.".toUpperCase());
 		/*
 		String endereco = "http://gutendex.com/books/?search=dom+casmurro";

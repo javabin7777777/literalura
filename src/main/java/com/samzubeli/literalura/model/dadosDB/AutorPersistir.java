@@ -1,4 +1,4 @@
-package com.samzubeli.literalura.model;
+package com.samzubeli.literalura.model.dadosDB;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,4 +15,15 @@ public class AutorPersistir {
 	private String nomeAutor;
 	private Integer anoNascimento;
 	private Integer anoFalecimento;
+	
+	public AutorPersistir(String idAutor, String nomeAutor, Integer anoNascimento, 
+			Integer anoFalecimento) {
+		super();
+		IdAutor = idAutor;
+		this.nomeAutor = nomeAutor;
+		this.anoNascimento = anoNascimento;
+		this.anoFalecimento = anoFalecimento;
+	}
+	
+	
 }
