@@ -1,0 +1,48 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2024-11-10T19:34:37.905-03:00  INFO 4520 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Starting LiteraluraApplication using Java 21 with PID 4520 (C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura\target\classes started by Jupiter in C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura)
+2024-11-10T19:34:37.927-03:00  INFO 4520 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-11-10T19:34:42.134-03:00  INFO 4520 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-10T19:34:42.412-03:00  INFO 4520 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 120 ms. Found 0 JPA repository interfaces.
+2024-11-10T19:34:46.191-03:00  INFO 4520 --- [literalura] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-10T19:34:47.358-03:00  INFO 4520 --- [literalura] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-10T19:34:47.726-03:00  INFO 4520 --- [literalura] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-10T19:34:52.207-03:00  INFO 4520 --- [literalura] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-10T19:34:52.449-03:00  INFO 4520 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-10T19:34:56.326-03:00  INFO 4520 --- [literalura] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@14447be
+2024-11-10T19:34:56.343-03:00  INFO 4520 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-10T19:35:07.670-03:00  INFO 4520 --- [literalura] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table autor_persistir (id_autor varchar(255) not null, ano_falecimento integer, ano_nascimento integer, nome_autor varchar(255), primary key (id_autor))
+Hibernate: create table livro_persitir (id_livro varchar(255) not null, idioma varchar(255), nome_livro varchar(255), numero_downloads integer, primary key (id_livro))
+Hibernate: alter table if exists autor_persistir drop constraint if exists UKnbfru28b51qpwb1pi3skps502
+2024-11-10T19:35:12.578-03:00  WARN 4520 --- [literalura] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-10T19:35:12.579-03:00  WARN 4520 --- [literalura] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "uknbfru28b51qpwb1pi3skps502" da relação "autor_persistir" não existe, ignorando
+Hibernate: alter table if exists autor_persistir add constraint UKnbfru28b51qpwb1pi3skps502 unique (nome_autor)
+Hibernate: alter table if exists livro_persitir drop constraint if exists UKbqis589jg22eliuohnrf8yvxv
+2024-11-10T19:35:12.607-03:00  WARN 4520 --- [literalura] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-10T19:35:12.608-03:00  WARN 4520 --- [literalura] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukbqis589jg22eliuohnrf8yvxv" da relação "livro_persitir" não existe, ignorando
+Hibernate: alter table if exists livro_persitir add constraint UKbqis589jg22eliuohnrf8yvxv unique (nome_livro)
+2024-11-10T19:35:12.622-03:00  INFO 4520 --- [literalura] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-10T19:35:14.011-03:00  INFO 4520 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Started LiteraluraApplication in 38.445 seconds (process running for 40.363)
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO
+    2. LISTAR LIVROS REGISTRADOS
+    3. LISTAR AUTORES REGISTRADOS
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO
+    5. LISTAR LIVROS POR IDIOMA
+    0. SAIR
+0
+
+TERMINOU,TCHAU.
+2024-11-10T19:36:27.439-03:00  INFO 4520 --- [literalura] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-10T19:36:27.466-03:00  INFO 4520 --- [literalura] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-10T19:36:27.512-03:00  INFO 4520 --- [literalura] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
