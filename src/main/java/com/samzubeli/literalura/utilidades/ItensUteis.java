@@ -13,13 +13,13 @@ public class ItensUteis {
 	private static String str = "";
 	public static void exibirMenu(ConsultarApi buscar, FiltrarDados filtro) {
 		while (true) {
-			System.out.println("escolha uma das opções abaixo\n".toUpperCase());
-			System.out.println("1. buscar livro pelo título".toUpperCase());
-			System.out.println("2. listar livros registrados".toUpperCase());
-			System.out.println("3. listar autores registrados".toUpperCase());
-			System.out.println("4. listar autores vivos em um determinado ano".toUpperCase());
-			System.out.println("5. listar livros por idioma".toUpperCase());
-			System.out.println("0. sair".toUpperCase());
+			System.out.println("\nescolha uma das opções abaixo".toUpperCase());
+			System.out.println("    1. buscar livro pelo título".toUpperCase());
+			System.out.println("    2. listar livros registrados".toUpperCase());
+			System.out.println("    3. listar autores registrados".toUpperCase());
+			System.out.println("    4. listar autores vivos em um determinado ano".toUpperCase());
+			System.out.println("    5. listar livros por idioma".toUpperCase());
+			System.out.println("    0. sair".toUpperCase());
 			int opcao = ler.nextInt();
 			ler.nextLine();
 			if (opcao == 0)
@@ -49,8 +49,8 @@ public class ItensUteis {
 	}
 
 	private static void cadastrarLivro(ConsultarApi buscar,FiltrarDados filtro) {
-		System.out.println("\n entre com o nome do livro".toUpperCase()
-				+" * nomes compostos,separar com espaço");
+		System.out.println("\n    entre com o nome do livro".toUpperCase()
+				+" * nomes compostos,favor usar como separador,o espaço");
 		String livroNome = ler.nextLine();
 		livroNome = livroNome.replace(" ", "+");
 		endereco = endereco.concat(livroNome); 

@@ -25,6 +25,7 @@ public class LiteraluraApplication implements CommandLineRunner {
 		FiltrarDados filtro = new FiltrarDados();
 		ConsultarApi buscar = new ConsultarApi();
 		ItensUteis.exibirMenu(buscar, filtro);
+		System.out.println("\nterminou,tchau.".toUpperCase());
 		/*
 		String endereco = "http://gutendex.com/books/?search=dom+casmurro";
 		String strJson = buscar.obterDados(endereco);
