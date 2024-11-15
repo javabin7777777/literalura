@@ -22,5 +22,5 @@ repositório do curso oracle-one alura 2024
     
       
 
-  ![Alt text](output/output- postgres4.jpg)  
+  ![Alt text](output/output-postgres4.jpg)  
     
