@@ -3,15 +3,15 @@ package com.samzubeli.literalura.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Livros {
+public class Livro {
 	
 	//private List<String> resultado = new ArrayList<>();		
 	private String titulo;
-	private List<Autores> autor = new ArrayList<>();
+	private List<Autores> autor;
 	private List<String> idioma = new ArrayList<>();
 	private Integer numeroDownloads; 
 	
-	public Livros(Resultados resultado) {
+	public Livro(Resultados resultado) {
 		super();
 		this.titulo = resultado.titulo();
 		this.autor = resultado.autor();
@@ -58,6 +58,5 @@ public class Livros {
 
 	public void setNumeroDownloads(Integer numeroDownloads) {
 		this.numeroDownloads = numeroDownloads;
-	}	
-	
+	}
 }

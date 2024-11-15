@@ -4,9 +4,8 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.samzubeli.literalura.model.dadosDB.LivroPersistir;
+import com.samzubeli.literalura.model.dadosDB.AutorDB;
 
-
-public interface livroPersistirRepository extends JpaRepository<LivroPersistir, UUID> {
+public interface IAutorDBRepository extends JpaRepository<AutorDB, UUID> {
 
 }

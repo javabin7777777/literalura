@@ -1,0 +1,152 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2024-11-14T22:35:03.080-03:00  INFO 11192 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Starting LiteraluraApplication using Java 21 with PID 11192 (C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura\target\classes started by Jupiter in C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura)
+2024-11-14T22:35:03.096-03:00  INFO 11192 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-11-14T22:35:06.636-03:00  INFO 11192 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-14T22:35:07.040-03:00  INFO 11192 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 361 ms. Found 2 JPA repository interfaces.
+2024-11-14T22:35:10.665-03:00  INFO 11192 --- [literalura] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-14T22:35:11.042-03:00  INFO 11192 --- [literalura] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-14T22:35:11.269-03:00  INFO 11192 --- [literalura] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-14T22:35:16.128-03:00  INFO 11192 --- [literalura] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-14T22:35:16.418-03:00  INFO 11192 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-14T22:35:18.826-03:00  INFO 11192 --- [literalura] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@433d9680
+2024-11-14T22:35:18.838-03:00  INFO 11192 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-14T22:35:30.406-03:00  INFO 11192 --- [literalura] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table autor_db (id_autor varchar(255) not null, ano_falecimento integer, ano_nascimento integer, nome_autor varchar(255), primary key (id_autor))
+Hibernate: create table livro_db (id_livro varchar(255) not null, idioma varchar(255), nome_livro varchar(255), numero_downloads integer, autor_id_autor varchar(255), primary key (id_livro))
+Hibernate: alter table if exists autor_db drop constraint if exists UKi0qb8ibxeglyu5rjvxd0a0y87
+2024-11-14T22:35:31.624-03:00  WARN 11192 --- [literalura] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-14T22:35:31.633-03:00  WARN 11192 --- [literalura] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "uki0qb8ibxeglyu5rjvxd0a0y87" da relação "autor_db" não existe, ignorando
+Hibernate: alter table if exists autor_db add constraint UKi0qb8ibxeglyu5rjvxd0a0y87 unique (nome_autor)
+Hibernate: alter table if exists livro_db drop constraint if exists UK6lbsnn0jxftnaiobw5v79454k
+2024-11-14T22:35:31.663-03:00  WARN 11192 --- [literalura] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-14T22:35:31.663-03:00  WARN 11192 --- [literalura] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "uk6lbsnn0jxftnaiobw5v79454k" da relação "livro_db" não existe, ignorando
+Hibernate: alter table if exists livro_db add constraint UK6lbsnn0jxftnaiobw5v79454k unique (nome_livro)
+Hibernate: alter table if exists livro_db add constraint FKsl5yrj0418phl8lq13n587vc3 foreign key (autor_id_autor) references autor_db
+2024-11-14T22:35:31.758-03:00  INFO 11192 --- [literalura] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-14T22:35:36.848-03:00  INFO 11192 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Started LiteraluraApplication in 36.344 seconds (process running for 38.567)
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    0. SAIR
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2024-11-14T22:43:34.128-03:00  INFO 9384 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Starting LiteraluraApplication using Java 21 with PID 9384 (C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura\target\classes started by Jupiter in C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura)
+2024-11-14T22:43:34.143-03:00  INFO 9384 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-11-14T22:43:37.766-03:00  INFO 9384 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-14T22:43:38.111-03:00  INFO 9384 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 304 ms. Found 2 JPA repository interfaces.
+2024-11-14T22:43:41.064-03:00  INFO 9384 --- [literalura] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-14T22:43:41.615-03:00  INFO 9384 --- [literalura] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-14T22:43:41.818-03:00  INFO 9384 --- [literalura] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-14T22:43:45.948-03:00  INFO 9384 --- [literalura] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-14T22:43:46.213-03:00  INFO 9384 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-14T22:43:48.491-03:00  INFO 9384 --- [literalura] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@28279a49
+2024-11-14T22:43:48.506-03:00  INFO 9384 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-14T22:43:59.881-03:00  INFO 9384 --- [literalura] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-14T22:44:00.512-03:00  INFO 9384 --- [literalura] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-14T22:44:07.872-03:00  INFO 9384 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Started LiteraluraApplication in 35.992 seconds (process running for 38.199)
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    0. SAIR
+1
+
+    ENTRE COM O NOME DO LIVRO *( nomes compostos,favor usar como separador,o espaço ) 
+the souls of black folk
+
+Livro= Livros [titulo=The Souls of Black Folk, autor=[Autores[nome=Du Bois, W. E. B. (William Edward Burghardt), anoNascimento=1868, anoFalecimento=1963]], idioma=[en], numeroDownloads=18463]
+
+Hibernate: insert into autor_db (ano_falecimento,ano_nascimento,nome_autor,id_autor) values (?,?,?,?)
+Hibernate: insert into livro_db (autor_id_autor,idioma,nome_livro,numero_downloads,id_livro) values (?,?,?,?,?)
+
+lista AutorDB = AutorDB [idAutor=14043c14-1f0f-46fd-ba11-cf9f00211b05, nomeAutor=Du Bois, W. E. B. (William Edward Burghardt), anoNascimento=1868, anoFalecimento=1963]
+
+lista LivroDB = [LivroDB [idLivro=71165514-110d-4745-b66f-6201d3bf8d86, nomeLivro=The Souls of Black Folk, idioma=en, numeroDownloads=18463]]
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    0. SAIR
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2024-11-14T22:47:19.640-03:00  INFO 10720 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Starting LiteraluraApplication using Java 21 with PID 10720 (C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura\target\classes started by Jupiter in C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura)
+2024-11-14T22:47:19.652-03:00  INFO 10720 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-11-14T22:47:23.133-03:00  INFO 10720 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-14T22:47:23.551-03:00  INFO 10720 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 378 ms. Found 2 JPA repository interfaces.
+2024-11-14T22:47:26.314-03:00  INFO 10720 --- [literalura] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-14T22:47:26.712-03:00  INFO 10720 --- [literalura] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-14T22:47:26.968-03:00  INFO 10720 --- [literalura] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-14T22:47:30.425-03:00  INFO 10720 --- [literalura] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-14T22:47:30.606-03:00  INFO 10720 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-14T22:47:32.264-03:00  INFO 10720 --- [literalura] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7730ef88
+2024-11-14T22:47:32.279-03:00  INFO 10720 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-14T22:47:42.142-03:00  INFO 10720 --- [literalura] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-14T22:47:42.586-03:00  INFO 10720 --- [literalura] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-14T22:47:44.955-03:00  INFO 10720 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Started LiteraluraApplication in 28.237 seconds (process running for 31.721)
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    0. SAIR
+1
+
+    ENTRE COM O NOME DO LIVRO *( nomes compostos,favor usar como separador,o espaço ) 
+the brothers karamazov
+
+Livro= Livros [titulo=The Brothers Karamazov, autor=[Autores[nome=Dostoyevsky, Fyodor, anoNascimento=1821, anoFalecimento=1881]], idioma=[en], numeroDownloads=18938]
+
+Hibernate: insert into autor_db (ano_falecimento,ano_nascimento,nome_autor,id_autor) values (?,?,?,?)
+Hibernate: insert into livro_db (autor_id_autor,idioma,nome_livro,numero_downloads,id_livro) values (?,?,?,?,?)
+
+lista AutorDB = AutorDB [idAutor=4fbf75e8-083f-4e13-9e62-544ecc516a8a, nomeAutor=Dostoyevsky, Fyodor, anoNascimento=1821, anoFalecimento=1881]
+
+lista LivroDB = [LivroDB [idLivro=a5485b95-6dca-4167-aae9-206bf7730dec, nomeLivro=The Brothers Karamazov, idioma=en, numeroDownloads=18938]]
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    0. SAIR
+

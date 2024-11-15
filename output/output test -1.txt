@@ -1,0 +1,66 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2024-11-13T22:43:44.474-03:00  INFO 768 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Starting LiteraluraApplication using Java 21 with PID 768 (C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura\target\classes started by Jupiter in C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura)
+2024-11-13T22:43:44.496-03:00  INFO 768 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-11-13T22:43:47.642-03:00  INFO 768 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13T22:43:48.032-03:00  INFO 768 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 343 ms. Found 2 JPA repository interfaces.
+2024-11-13T22:43:51.111-03:00  INFO 768 --- [literalura] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13T22:43:51.706-03:00  INFO 768 --- [literalura] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13T22:43:51.961-03:00  INFO 768 --- [literalura] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-13T22:43:54.742-03:00  INFO 768 --- [literalura] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13T22:43:54.914-03:00  INFO 768 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-13T22:43:57.108-03:00  INFO 768 --- [literalura] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@704067c6
+2024-11-13T22:43:57.120-03:00  INFO 768 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-13T22:44:09.948-03:00  INFO 768 --- [literalura] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13T22:44:10.392-03:00  INFO 768 --- [literalura] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13T22:44:14.124-03:00  INFO 768 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Started LiteraluraApplication in 32.101 seconds (process running for 35.253)
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO
+    2. LISTAR LIVROS REGISTRADOS
+    3. LISTAR AUTORES REGISTRADOS
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO
+    5. LISTAR LIVROS POR IDIOMA
+    0. SAIR
+1
+
+    ENTRE COM O NOME DO LIVRO * nomes compostos,favor usar como separador,o espaço
+dom casmurro
+
+LivroLivros [titulo=Dom Casmurro, autor=[Autores[nome=Machado de Assis, anoNascimento=1839, anoFalecimento=1908]], idioma=[pt], numeroDownloads=1098]
+lista livroDB = []
+Hibernate: insert into autor_db (ano_falecimento,ano_nascimento,nome_autor,id_autor) values (?,?,?,?)
+Hibernate: insert into livro_db (autor_id_autor,idioma,nome_livro,numero_downloads,id_livro) values (?,?,?,?,?)
+Machado de Assis
+1839
+1908
+Hibernate: select ad1_0.id_autor,ad1_0.ano_falecimento,ad1_0.ano_nascimento,ad1_0.nome_autor from autor_db ad1_0
+Hibernate: select ld1_0.id_livro,ld1_0.autor_id_autor,ld1_0.idioma,ld1_0.nome_livro,ld1_0.numero_downloads from livro_db ld1_0
+Hibernate: select ad1_0.id_autor,ad1_0.ano_falecimento,ad1_0.ano_nascimento,ad1_0.nome_autor from autor_db ad1_0 where ad1_0.id_autor=?
+[com.samzubeli.literalura.model.dadosDB.AutorDB@747f0f34]
+[com.samzubeli.literalura.model.dadosDB.LivroDB@17ebbf1e]
+d3eb71c1-3425-4fad-a525-c94604617d47
+Machado de Assis
+1908
+1839
+
+ea2980c7-703a-40bd-bd1e-18977de8c90d
+Dom Casmurro
+pt
+1098
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO
+    2. LISTAR LIVROS REGISTRADOS
+    3. LISTAR AUTORES REGISTRADOS
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO
+    5. LISTAR LIVROS POR IDIOMA
+    0. SAIR
