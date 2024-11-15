@@ -3,24 +3,24 @@ repositório do curso oracle-one alura 2024
 
 - SGBD POSTGRES DASHBOARD  
   
-  ![Alt text](output/dashboard postgres - Captura de tela 2024-11-10 195035.jpg)  
+  ![Alt text](output/dashboard-postgres.jpg)  
 
 
 - POSTGRES  
   
     
   
-  ![Alt text](output/output postgres - 1 Captura de tela 2024-11-14 223921.jpg)  
+  ![Alt text](output/output-postgres1.jpg)  
     
       
     
-  ![Alt text](output/output postgres - 1 Captura de tela 2024-11-14 224044.jpg)  
+  ![Alt text](output/output-postgres2.jpg)  
     
      
 
-  ![Alt text](output/output postgres - 2 Captura de tela 2024-11-14 224954.jpg)  
+  ![Alt text](output/output-postgres3.jpg)  
     
       
 
-  ![Alt text](output/output postgres - 2 Captura de tela 2024-11-14 225101.jpg)  
+  ![Alt text](output/output- postgres4.jpg)  
     
