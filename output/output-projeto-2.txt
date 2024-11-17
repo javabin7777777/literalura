@@ -1,0 +1,149 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2024-11-17T11:22:30.071-03:00  INFO 7560 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Starting LiteraluraApplication using Java 21 with PID 7560 (C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura\target\classes started by Jupiter in C:\GitHubjavabin7777777\PROJETOS-ORACLE-ONE-ALURA\literalura)
+2024-11-17T11:22:30.098-03:00  INFO 7560 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-11-17T11:22:42.750-03:00  INFO 7560 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-17T11:22:43.935-03:00  INFO 7560 --- [literalura] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1000 ms. Found 2 JPA repository interfaces.
+2024-11-17T11:22:50.570-03:00  INFO 7560 --- [literalura] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-17T11:22:52.253-03:00  INFO 7560 --- [literalura] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-17T11:22:53.590-03:00  INFO 7560 --- [literalura] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-17T11:23:02.257-03:00  INFO 7560 --- [literalura] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-17T11:23:02.821-03:00  INFO 7560 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-17T11:23:08.419-03:00  INFO 7560 --- [literalura] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@704067c6
+2024-11-17T11:23:08.428-03:00  INFO 7560 --- [literalura] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-17T11:23:28.327-03:00  INFO 7560 --- [literalura] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-17T11:23:30.341-03:00  INFO 7560 --- [literalura] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-17T11:23:34.685-03:00  INFO 7560 --- [literalura] [           main] c.s.literalura.LiteraluraApplication     : Started LiteraluraApplication in 70.372 seconds (process running for 72.614)
+Hibernate: select ad1_0.id_autor,ad1_0.ano_falecimento,ad1_0.ano_nascimento,ad1_0.nome_autor from autor_db ad1_0
+Hibernate: select l1_0.autor_id_autor,l1_0.id_livro,l1_0.idioma,l1_0.nome_livro,l1_0.numero_downloads from livro_db l1_0 where l1_0.autor_id_autor=?
+Hibernate: select l1_0.autor_id_autor,l1_0.id_livro,l1_0.idioma,l1_0.nome_livro,l1_0.numero_downloads from livro_db l1_0 where l1_0.autor_id_autor=?
+Hibernate: select l1_0.autor_id_autor,l1_0.id_livro,l1_0.idioma,l1_0.nome_livro,l1_0.numero_downloads from livro_db l1_0 where l1_0.autor_id_autor=?
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    6. LISTAR OS TOP'S 5,LOCAL
+    0. SAIR
+2
+
+[[LivroDB [idLivro=cd8e0068-2c19-47b5-92ad-cb2a181924e6, nomeLivro=Dom Casmurro, idioma=pt, numeroDownloads=1098]], [LivroDB [idLivro=71165514-110d-4745-b66f-6201d3bf8d86, nomeLivro=The Souls of Black Folk, idioma=en, numeroDownloads=18463]], [LivroDB [idLivro=a5485b95-6dca-4167-aae9-206bf7730dec, nomeLivro=The Brothers Karamazov, idioma=en, numeroDownloads=18938]]]
+
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    6. LISTAR OS TOP'S 5,LOCAL
+    0. SAIR
+3
+
+[AutorDB [idAutor=d93fb3d9-e4e1-4450-94dc-8c52eb8a6166, nomeAutor=Machado de Assis, anoNascimento=1839, anoFalecimento=1908], AutorDB [idAutor=14043c14-1f0f-46fd-ba11-cf9f00211b05, nomeAutor=Du Bois, W. E. B. (William Edward Burghardt), anoNascimento=1868, anoFalecimento=1963], AutorDB [idAutor=4fbf75e8-083f-4e13-9e62-544ecc516a8a, nomeAutor=Dostoyevsky, Fyodor, anoNascimento=1821, anoFalecimento=1881]]
+
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    6. LISTAR OS TOP'S 5,LOCAL
+    0. SAIR
+4
+
+ NÃO EXISTEM AUTORES VIVOS
+
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    6. LISTAR OS TOP'S 5,LOCAL
+    0. SAIR
+5
+
+ENTRE COM O IDIOMA *(ex: pt para português)
+en
+
+LIVROS COM IDIOMA INGLÊS
+
+LivroDB [idLivro=71165514-110d-4745-b66f-6201d3bf8d86, nomeLivro=The Souls of Black Folk, idioma=en, numeroDownloads=18463]
+LivroDB [idLivro=a5485b95-6dca-4167-aae9-206bf7730dec, nomeLivro=The Brothers Karamazov, idioma=en, numeroDownloads=18938]
+
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    6. LISTAR OS TOP'S 5,LOCAL
+    0. SAIR
+5
+
+ENTRE COM O IDIOMA *(ex: pt para português)
+pt
+
+LIVROS COM IDIOMA PORTUGUÊS
+
+LivroDB [idLivro=cd8e0068-2c19-47b5-92ad-cb2a181924e6, nomeLivro=Dom Casmurro, idioma=pt, numeroDownloads=1098]
+
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    6. LISTAR OS TOP'S 5,LOCAL
+    0. SAIR
+1
+
+    ENTRE COM O NOME DO LIVRO *( nomes compostos,favor usar como separador,o espaço ) 
+moby dick or the whale
+
+Livro= Livros [titulo=Moby Dick; Or, The Whale, autor=[Autores[nome=Melville, Herman, anoNascimento=1819, anoFalecimento=1891]], idioma=[en], numeroDownloads=74858]
+
+Hibernate: insert into autor_db (ano_falecimento,ano_nascimento,nome_autor,id_autor) values (?,?,?,?)
+Hibernate: insert into livro_db (autor_id_autor,idioma,nome_livro,numero_downloads,id_livro) values (?,?,?,?,?)
+Hibernate: select ad1_0.id_autor,ad1_0.ano_falecimento,ad1_0.ano_nascimento,ad1_0.nome_autor from autor_db ad1_0
+Hibernate: select l1_0.autor_id_autor,l1_0.id_livro,l1_0.idioma,l1_0.nome_livro,l1_0.numero_downloads from livro_db l1_0 where l1_0.autor_id_autor=?
+Hibernate: select l1_0.autor_id_autor,l1_0.id_livro,l1_0.idioma,l1_0.nome_livro,l1_0.numero_downloads from livro_db l1_0 where l1_0.autor_id_autor=?
+Hibernate: select l1_0.autor_id_autor,l1_0.id_livro,l1_0.idioma,l1_0.nome_livro,l1_0.numero_downloads from livro_db l1_0 where l1_0.autor_id_autor=?
+Hibernate: select l1_0.autor_id_autor,l1_0.id_livro,l1_0.idioma,l1_0.nome_livro,l1_0.numero_downloads from livro_db l1_0 where l1_0.autor_id_autor=?
+
+lista AutorDB = AutorDB [idAutor=5c34c73a-2105-403b-9a14-0348fa90c2ae, nomeAutor=Melville, Herman, anoNascimento=1819, anoFalecimento=1891]
+
+lista LivroDB = [LivroDB [idLivro=85e12fe9-1a86-4e23-b2bc-5ab970698354, nomeLivro=Moby Dick; Or, The Whale, idioma=en, numeroDownloads=74858]]
+
+Lista de autores atualizada: [AutorDB [idAutor=d93fb3d9-e4e1-4450-94dc-8c52eb8a6166, nomeAutor=Machado de Assis, anoNascimento=1839, anoFalecimento=1908], AutorDB [idAutor=14043c14-1f0f-46fd-ba11-cf9f00211b05, nomeAutor=Du Bois, W. E. B. (William Edward Burghardt), anoNascimento=1868, anoFalecimento=1963], AutorDB [idAutor=4fbf75e8-083f-4e13-9e62-544ecc516a8a, nomeAutor=Dostoyevsky, Fyodor, anoNascimento=1821, anoFalecimento=1881], AutorDB [idAutor=5c34c73a-2105-403b-9a14-0348fa90c2ae, nomeAutor=Melville, Herman, anoNascimento=1819, anoFalecimento=1891]]
+
+
+ESCOLHA UMA DAS OPÇÕES ABAIXO
+    1. BUSCAR LIVRO PELO TÍTULO NA API WEB
+    2. LISTAR LIVROS REGISTRADOS,LOCAL
+    3. LISTAR AUTORES REGISTRADOS,LOCAL
+    4. LISTAR AUTORES VIVOS EM UM DETERMINADO ANO,LOCAL
+    5. LISTAR LIVROS POR IDIOMA,LOCAL
+    6. LISTAR OS TOP'S 5,LOCAL
+    0. SAIR
+0
+
+TERMINOU,TCHAU.
+2024-11-17T11:29:37.595-03:00  INFO 7560 --- [literalura] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-17T11:29:37.648-03:00  INFO 7560 --- [literalura] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-17T11:29:37.694-03:00  INFO 7560 --- [literalura] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

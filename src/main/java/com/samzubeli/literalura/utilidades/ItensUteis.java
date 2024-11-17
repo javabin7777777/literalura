@@ -13,7 +13,6 @@ import com.samzubeli.literalura.model.Livro;
 import com.samzubeli.literalura.model.dadosDB.AutorDB;
 import com.samzubeli.literalura.model.dadosDB.LivroDB;
 import com.samzubeli.literalura.model.dadosDB.repository.IAutorDBRepository;
-import com.samzubeli.literalura.model.dadosDB.repository.ILivroDBRepository;
 import com.samzubeli.literalura.servico.ConsultarApi;
 import com.samzubeli.literalura.servico.FiltrarDados;
 
@@ -21,10 +20,11 @@ public class ItensUteis {
 	private static Scanner ler = new Scanner(System.in);
 	private static String endereco = "http://gutendex.com/books/?search="; //"http://gutendex.com/books/?search=dom+casmurro";
 	private static String str = "";	
-	private final static String mensagemA = "\n não há livros e autores,localmente\n";
+	private static List<AutorDB> lista;
+	private final static String mensagemA = "\n não há livros e autores,localmente\n".toUpperCase();
 	
 	public static void exibirMenu(ConsultarApi buscar, FiltrarDados filtro, 
-			 IAutorDBRepository repositoryAutor) {
+			 IAutorDBRepository repositoryAutor, List<AutorDB> lista) {
 		
 		while (true) {
 			System.out.println("\nescolha uma das opções abaixo".toUpperCase());
@@ -33,6 +33,7 @@ public class ItensUteis {
 			System.out.println("    3. listar autores registrados,local".toUpperCase());
 			System.out.println("    4. listar autores vivos em um determinado ano,local".toUpperCase());
 			System.out.println("    5. listar livros por idioma,local".toUpperCase());
+			System.out.println("    6. listar os TOP's 5,local".toUpperCase());
 			System.out.println("    0. sair".toUpperCase());
 			int opcao = ler.nextInt();
 			ler.nextLine();
@@ -45,23 +46,30 @@ public class ItensUteis {
 				cadastrarLivro (buscar, filtro, repositoryAutor);				
 				break;
 			case 2:
-				 System.out.println(listarLivros(repositoryAutor));				
+				 System.out.println("\n"+listarLivros(lista)+"\n");				
 				break;
 			case 3:
-				System.out.println(listarAutores(repositoryAutor));
+				listarAutores(lista);
 				break;
 			case 4:
-				listarAutoresVivos(repositoryAutor);
+				listarAutoresVivos(lista);
 				break;
 			case 5:
-				listarLivrosPorIdioma(repositoryAutor);
+				listarLivrosPorIdioma(lista);
+				break;
+			case 6:
+				listarTop5(repositoryAutor, lista);
 				break;
 			}
 		}
 	}
 	
+	private static void listarTop5(IAutorDBRepository repositoryAutor, List<AutorDB> lista) {
+			
+	}
+
 	private static void cadastrarLivro(ConsultarApi buscar,FiltrarDados filtro, 
-			 IAutorDBRepository repositoryAutor) {
+			 IAutorDBRepository repository) {		
 		
 		System.out.println("\n    entre com o nome do livro".toUpperCase()
 				+" *( nomes compostos,favor usar como separador,o espaço ) ");
@@ -77,43 +85,41 @@ public class ItensUteis {
 		AutorDB autor = new AutorDB(livro.getAutor().get(0));
 		livroDB.setAutor(autor);		
 		autor.getLivro().add(livroDB);
-		repositoryAutor.save(autor);
+		repository.save(autor);
+		lista = repository.findAll();
 		System.out.println();
 		System.out.println("lista AutorDB = "+autor);
 		System.out.println();
-		System.out.println("lista LivroDB = "+autor.getLivro());			
+		System.out.println("lista LivroDB = "+autor.getLivro());
+		System.out.println();
+		System.out.println("Lista de autores atualizada: "+lista+"\n");
 	}
 	
-	private static List<List<LivroDB>> listarLivros(IAutorDBRepository repository) {
-		List<AutorDB> lista  = repository.findAll();
+	private static List<List<LivroDB>> listarLivros(List<AutorDB> lista) {
+		//List<AutorDB> lista  = repository.findAll();
 		if(!lista.isEmpty()) {
 			List<List<LivroDB>> listaDeLivros = lista.stream()
 												.map(elemento -> elemento.getLivro())
 												.collect(Collectors.toList());
 			return listaDeLivros;
 		} 
-		System.out.println(mensagemA.toUpperCase());
+		System.out.println(mensagemA);
 		return null;
 	}
 	
-	private static List<AutorDB> listarAutores(IAutorDBRepository repository) {
-		List<AutorDB> listaDeAutores = repository.findAll();
-		if(listaDeAutores.isEmpty()) {			
-			System.out.println(mensagemA.toUpperCase());
-			return null;
-		}			
-		return listaDeAutores;
+	private static void listarAutores(List<AutorDB> lista) {		
+		if(lista.isEmpty()) System.out.println(mensagemA);
+		else  System.out.println("\n"+lista+"\n");
 	}
 	
-	private static void listarAutoresVivos(IAutorDBRepository repository) {	
-		List<AutorDB> lista  = repository.findAll();
+	private static void listarAutoresVivos(List<AutorDB> lista) {		
 		if(!lista.isEmpty()) {
 			Date dataAtual = new Date();
 			DateFormat simple = new SimpleDateFormat("yyyy");
 			Integer anoAtual = Integer.parseInt(simple.format(dataAtual));			
 			List<AutorDB> listaDeAutores = 
 					lista.stream()												
-					.filter(autor -> anoAtual - autor.getAnoNascimento()<121)
+					.filter(autor -> anoAtual - autor.getAnoNascimento() < 121)
 					.collect(Collectors.toList());
 			
 			if(!listaDeAutores.isEmpty()) 
@@ -123,14 +129,13 @@ public class ItensUteis {
 				System.out.println("\n não existem autores vivos\n".toUpperCase());
 			
 			
-		} else System.out.println(mensagemA.toUpperCase());		
+		} else System.out.println(mensagemA);		
 	}
 	
-	private static void listarLivrosPorIdioma(IAutorDBRepository repository) {
-		
-		List<AutorDB> lista  = repository.findAll();
+	private static void listarLivrosPorIdioma(List<AutorDB> lista) {		
+	
 		if(lista.isEmpty()) {
-			System.out.println(mensagemA.toUpperCase());			
+			System.out.println(mensagemA);			
 		} else {			
 			 List<String> idiomas = lista.stream()
 					.flatMap(autor -> autor.getLivro().stream())
@@ -144,7 +149,8 @@ public class ItensUteis {
 				lista.stream()
 				.flatMap(autor -> autor.getLivro().stream()
 				.filter(livro -> livro.getIdioma().equalsIgnoreCase(idioma)))
-				.forEach(System.out::println);			
+				.forEach(System.out::println);	
+				System.out.println();
 			} else 
 				System.out.println("\n não há livros com o idioma "
 						.toUpperCase()+IDIOMA.fromString(idioma)

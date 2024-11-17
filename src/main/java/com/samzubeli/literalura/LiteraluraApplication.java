@@ -1,12 +1,14 @@
 package com.samzubeli.literalura;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.samzubeli.literalura.model.dadosDB.AutorDB;
 import com.samzubeli.literalura.model.dadosDB.repository.IAutorDBRepository;
-import com.samzubeli.literalura.model.dadosDB.repository.ILivroDBRepository;
 import com.samzubeli.literalura.servico.ConsultarApi;
 import com.samzubeli.literalura.servico.FiltrarDados;
 import com.samzubeli.literalura.utilidades.ItensUteis;
@@ -15,8 +17,10 @@ import com.samzubeli.literalura.utilidades.ItensUteis;
 public class LiteraluraApplication implements CommandLineRunner {
 	
 	// Iteragir com SGBD.
-	//@Autowired
-	//private ILivroDBRepository repositoryLivro;
+	/*
+	@Autowired
+	private ILivroDBRepository repositoryLivro;
+	*/
 	
 	@Autowired
 	private IAutorDBRepository repositoryAutor;
@@ -26,10 +30,11 @@ public class LiteraluraApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String... args) throws Exception {		
 		FiltrarDados filtro = new FiltrarDados();
 		ConsultarApi buscar = new ConsultarApi();
-		ItensUteis.exibirMenu(buscar, filtro, repositoryAutor);
+		List<AutorDB> lista  = repositoryAutor.findAll();
+		ItensUteis.exibirMenu(buscar, filtro, repositoryAutor, lista);
 		System.out.println("\nterminou,tchau.".toUpperCase());		
 	}
 }
