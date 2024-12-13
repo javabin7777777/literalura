@@ -75,8 +75,8 @@ public class ItensUteis {
 			.limit(5)
 			.forEach(System.out::println);			
 			System.out.println("\n");
-		} 
-		System.out.println(mensagemA);		
+			
+		} else System.out.println(mensagemA);		
 	}
 
 	private static void cadastrarLivro(ConsultarApi buscar,FiltrarDados filtro, 
