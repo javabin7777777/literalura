@@ -2,6 +2,7 @@ package com.samzubeli.literalura.utilidades;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -58,14 +59,23 @@ public class ItensUteis {
 				listarLivrosPorIdioma(lista);
 				break;
 			case 6:
-				listarTop5(repositoryAutor, lista);
+				listarTop5(lista);
 				break;
 			}
 		}
 	}
 	
-	private static void listarTop5(IAutorDBRepository repositoryAutor, List<AutorDB> lista) {
-			
+	private static void listarTop5(List<AutorDB> lista) {
+		if(!lista.isEmpty()) {
+			System.out.println("\n");			
+			lista.stream()
+			.flatMap(e -> e.getLivro().stream())
+			.sorted(Comparator.comparing(LivroDB::getNumeroDownloads))
+			.limit(5)
+			.forEach(System.out::println);			
+			System.out.println("\n");
+		} 
+		System.out.println(mensagemA);		
 	}
 
 	private static void cadastrarLivro(ConsultarApi buscar,FiltrarDados filtro, 
@@ -79,8 +89,8 @@ public class ItensUteis {
 		str = buscar.obterDados(endereco);
 		DadosDoLivro dadosDoLivro = filtro.obterDados(str, DadosDoLivro.class);
 		Livro livro = new Livro(dadosDoLivro.resultado().get(0));		
-		System.out.println("\nLivro= "+ livro);
-		System.out.println();
+		//System.out.println("\nLivro= "+ livro);
+		//System.out.println();
 		LivroDB livroDB = new LivroDB(livro);				
 		AutorDB autor = new AutorDB(livro.getAutor().get(0));
 		livroDB.setAutor(autor);		
@@ -95,9 +105,8 @@ public class ItensUteis {
 		System.out.println("Lista de autores atualizada: "+lista+"\n");
 	}
 	
-	private static List<List<LivroDB>> listarLivros(List<AutorDB> lista) {
-		//List<AutorDB> lista  = repository.findAll();
-		if(!lista.isEmpty()) {
+	private static List<List<LivroDB>> listarLivros(List<AutorDB> lista) {		
+		if(!lista.isEmpty()) {			
 			List<List<LivroDB>> listaDeLivros = lista.stream()
 												.map(elemento -> elemento.getLivro())
 												.collect(Collectors.toList());
@@ -132,8 +141,7 @@ public class ItensUteis {
 		} else System.out.println(mensagemA);		
 	}
 	
-	private static void listarLivrosPorIdioma(List<AutorDB> lista) {		
-	
+	private static void listarLivrosPorIdioma(List<AutorDB> lista) {	
 		if(lista.isEmpty()) {
 			System.out.println(mensagemA);			
 		} else {			

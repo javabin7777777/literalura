@@ -4,7 +4,7 @@ public enum IDIOMA {
 	pt("PORTUGUÊS"),
 	en("INGLÊS"),
 	fr("FRANCÊS"),
-	n("N/A");
+	n(" (IDIOMA NÃO CADASTRADO)");
 
 	private String idioma;
 
