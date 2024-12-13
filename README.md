@@ -1,12 +1,31 @@
-# Literalura
-repositório do curso oracle-one alura 2024   
-
-- **SGBD POSTGRES DASHBOARD**  
+### Literalura  
+  
+Repositório do curso oracle-one alura 2024 
+   
+- Consumir a API REST GUTENDEX e persistir os dados consumidos.
+- Spring Boot Data Jpa(Hibernate).
+- Banco de dados PostgreSQL. 
+- IDE Eclipse 2024-12.
+- Plataforma: Win10 Single Language.   
+  
+    
+      
+        
+<video controls width="300">
+  <source src="/output/Literalura-Gravar_2024_12_13_10_36_00_88.webm" type="video/webm" /> 
+</video>  
+  
+    
+      
+      
+# **SGBD POSTGRES DASHBOARD**  
   
   ![Alt text](output/dashboard-postgres.jpg)  
+  
+  
+ 
 
-
-- **POSTGRES** 
+- **POSTGRES Consultas** 
   
     
   
@@ -25,7 +44,8 @@ repositório do curso oracle-one alura 2024
   ![Alt text](output/output-postgres4.jpg)  
       
    
-  
+   
+      
 ***
  - **SAÍDA DO PROJETO** 
    

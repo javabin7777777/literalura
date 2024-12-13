@@ -28,7 +28,7 @@ public class ItensUteis {
 			 IAutorDBRepository repositoryAutor, List<AutorDB> lista) {
 		
 		while (true) {
-			System.out.println("\nescolha uma das opções abaixo".toUpperCase());
+			System.out.println("\nescolha uma das opções abaixo:".toUpperCase());
 			System.out.println("    1. buscar livro pelo título na api web".toUpperCase());
 			System.out.println("    2. listar livros registrados,local".toUpperCase());
 			System.out.println("    3. listar autores registrados,local".toUpperCase());
@@ -47,7 +47,7 @@ public class ItensUteis {
 				cadastrarLivro (buscar, filtro, repositoryAutor);				
 				break;
 			case 2:
-				 System.out.println("\n"+listarLivros(lista)+"\n");				
+				 listarLivros(lista);				
 				break;
 			case 3:
 				listarAutores(lista);
@@ -65,12 +65,13 @@ public class ItensUteis {
 		}
 	}
 	
+	
 	private static void listarTop5(List<AutorDB> lista) {
 		if(!lista.isEmpty()) {
-			System.out.println("\n");			
+			System.out.println("\nos top's 5\n".toUpperCase());			
 			lista.stream()
 			.flatMap(e -> e.getLivro().stream())
-			.sorted(Comparator.comparing(LivroDB::getNumeroDownloads))
+			.sorted(Comparator.comparing(LivroDB::getNumeroDownloads).reversed())
 			.limit(5)
 			.forEach(System.out::println);			
 			System.out.println("\n");
@@ -82,8 +83,9 @@ public class ItensUteis {
 			 IAutorDBRepository repository) {		
 		
 		System.out.println("\n    entre com o nome do livro".toUpperCase()
-				+" *( nomes compostos,favor usar como separador,o espaço ) ");
+				+" *( nomes compostos,favor usar como separador,o espaço ) ");		
 		String livroNome = ler.nextLine();
+		
 		livroNome = livroNome.replace(" ","+");		
 		endereco = endereco.concat(livroNome);	
 		str = buscar.obterDados(endereco);
@@ -96,29 +98,34 @@ public class ItensUteis {
 		livroDB.setAutor(autor);		
 		autor.getLivro().add(livroDB);
 		repository.save(autor);
-		lista = repository.findAll();
+		lista = repository.findAll(); // Atualizar a lista.
 		System.out.println();
-		System.out.println("lista AutorDB = "+autor);
+		System.out.println("lista AutorDB = ".toUpperCase()+autor+"\n");	
+		System.out.println("lista LivroDB = ".toUpperCase()+autor.getLivro()+"\n");
+		System.out.println("Lista de autores atualizada: ".toUpperCase());
+		lista.stream().forEach(System.out::println);
 		System.out.println();
-		System.out.println("lista LivroDB = "+autor.getLivro());
-		System.out.println();
-		System.out.println("Lista de autores atualizada: "+lista+"\n");
 	}
 	
-	private static List<List<LivroDB>> listarLivros(List<AutorDB> lista) {		
-		if(!lista.isEmpty()) {			
-			List<List<LivroDB>> listaDeLivros = lista.stream()
-												.map(elemento -> elemento.getLivro())
-												.collect(Collectors.toList());
-			return listaDeLivros;
-		} 
-		System.out.println(mensagemA);
-		return null;
+	private static void listarLivros(List<AutorDB> lista) {	
+		System.out.println("\nlista de livros,localmente\n".toUpperCase());
+		if(!lista.isEmpty()) {
+			lista.stream()
+			.flatMap(e -> e.getLivro().stream())
+			.forEach(System.out::println);	
+			
+			System.out.println();
+		}
+		else System.out.println(mensagemA);
 	}
 	
-	private static void listarAutores(List<AutorDB> lista) {		
+	private static void listarAutores(List<AutorDB> lista) {
+		System.out.println("\nlista de autores,localmente\n".toUpperCase());
 		if(lista.isEmpty()) System.out.println(mensagemA);
-		else  System.out.println("\n"+lista+"\n");
+		else {
+			lista.stream().forEach(System.out::println);
+			System.out.println();
+		}
 	}
 	
 	private static void listarAutoresVivos(List<AutorDB> lista) {		
@@ -129,14 +136,14 @@ public class ItensUteis {
 			List<AutorDB> listaDeAutores = 
 					lista.stream()												
 					.filter(autor -> anoAtual - autor.getAnoNascimento() < 121)
-					.collect(Collectors.toList());
+					.toList();
 			
-			if(!listaDeAutores.isEmpty()) 
-				System.out.println("\n lista de autores vivos \n".toUpperCase()
-						+listaDeAutores+"\n");
-			else 
-				System.out.println("\n não existem autores vivos\n".toUpperCase());
-			
+			if(!listaDeAutores.isEmpty()) {
+				System.out.println("\n lista de autores vivos \n".toUpperCase());
+				listaDeAutores.stream().forEach(System.out::println);
+				System.out.println();
+			}
+			else System.out.println("\n não existem autores vivos\n".toUpperCase());			
 			
 		} else System.out.println(mensagemA);		
 	}
@@ -148,21 +155,21 @@ public class ItensUteis {
 			 List<String> idiomas = lista.stream()
 					.flatMap(autor -> autor.getLivro().stream())
 					.map(livro -> livro.getIdioma())
-					.collect(Collectors.toList());
+					.toList();
 			System.out.println("\nentre com o idioma".toUpperCase()+" *(ex: pt para português)");
 			String idioma = ler.nextLine();			
 			if(idiomas.contains(idioma)) {				
 				System.out.println("\nlivros com idioma "
-						.toUpperCase()+IDIOMA.fromString(idioma)+"\n");
+						.toUpperCase()+IDIOMA.fromString(idioma)+"\n");				
 				lista.stream()
 				.flatMap(autor -> autor.getLivro().stream()
 				.filter(livro -> livro.getIdioma().equalsIgnoreCase(idioma)))
-				.forEach(System.out::println);	
+				.forEach(System.out::println);				
 				System.out.println();
 			} else 
 				System.out.println("\n não há livros com o idioma "
 						.toUpperCase()+IDIOMA.fromString(idioma)
-				+" ,localmente\n".toUpperCase());
+				+",localmente\n".toUpperCase());
 		}
 	}
 }
