@@ -112,8 +112,7 @@ public class ItensUteis {
 		if(!lista.isEmpty()) {
 			lista.stream()
 			.flatMap(e -> e.getLivro().stream())
-			.forEach(System.out::println);	
-			
+			.forEach(System.out::println);			
 			System.out.println();
 		}
 		else System.out.println(mensagemA);
