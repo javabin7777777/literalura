@@ -10,14 +10,18 @@ Repositório do curso oracle-one alura 2024
   
     
       
-        
+<a href="./output/Literalura-Gravar_2024_12_13_10_36_00_88.webm">Literalura-video</a>  
+
+
 <video controls width="250">
-  <source src="/output/Literalura-Gravar_2024_12_13_10_36_00_88.webm" type="video/webm" /> 
+  <source src="./output/Literalura-Gravar_2024_12_13_10_36_00_88.webm" type="video/webm" /> 
 </video>  
   
-    
+  
       
-      
+
+     
+          
 # **SGBD POSTGRES DASHBOARD**  
   
   ![Alt text](output/dashboard-postgres.jpg)  
